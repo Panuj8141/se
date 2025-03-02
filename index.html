@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Images in Boxes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .box-container {
+            display: grid;
+            grid-template-columns: repeat(3, 150px);
+            grid-template-rows: repeat(3, 150px);
+            gap: 10px;
+        }
+
+        .box {
+            width: 150px;
+            height: 150px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .box img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+        }
+
+        /* Popup Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Display Images in Boxes</h1>
+
+    <div class="box-container">
+        <!-- Boxes with directly embedded images -->
+        <div class="box">
+            <img src="er diagram.jpg" alt="Image 1">
+        </div> 
+        
+        <div class="box">
+            <img src="class diagram.png" alt="Image 2">
+        </div>
+        <div class="box">
+            <img src="activity 1.jpg" alt="Image 3">
+        </div>
+        <div class="box">
+            <img src="activity 2.jpg" alt="Image 4">
+        </div>
+        <div class="box">
+            <img src="dfd 0.jpg" alt="Image 5">
+        </div>
+        <div class="box">
+            <img src="dfd 1.jpg" alt="Image 6">
+        </div>
+        <div class="box">
+            <img src="dfd 2.jpg" alt="Image 7">
+        </div>
+        <div class="box">
+            <img src="use case.jpg" alt="Image 8">
+        </div>
+        <div class="box">
+            <img src="sequence 1 .jpg" alt="Image 9">
+            
+        </div>
+        <div class="box">
+            <img src="component .jpg" alt="Image 8">
+        </div>
+        <div class="box">
+            <img src="transection diagram.jpg" alt="Image 8">
+        </div>
+        <div class="box">
+            <img src="coleboration 1.jpg" alt="Image 8">
+        </div>
+        <div class="box">
+            <img src="coleboration 2.jpg" alt="Image 8">
+        </div>
+    </div>
+
+    <!-- Popup Modal -->
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <div class="modal-content">
+            <img id="modal-image" src="#" alt="Popup Image">
+        </div>
+    </div>
+
+    <script>
+        // Popup Modal Functionality
+        const modal = document.getElementById('modal');
+        const modalImage = document.getElementById('modal-image');
+        const closeModal = document.querySelector('.close');
+
+        // Open modal when an image is clicked
+        document.querySelectorAll('.box img').forEach(img => {
+            img.addEventListener('click', function () {
+                modal.style.display = 'flex';
+                modalImage.src = this.src;
+            });
+        });
+
+        // Close modal when the close button is clicked
+        closeModal.addEventListener('click', function () {
+            modal.style.display = 'none';
+        });
+
+        // Close modal when clicking outside the image
+        window.addEventListener('click', function (event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
