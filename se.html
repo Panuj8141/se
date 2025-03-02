@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Selector & Download</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .image-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+        img {
+            max-width: 400px;
+            max-height: 400px;
+            display: block;
+            margin: 10px auto;
+            border: 2px solid #333;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+        .download-btn {
+            display: none;
+            margin-top: 10px;
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select an Image</h1>
+    <label for="imageSelect">Choose an Image:</label>
+    <select id="imageSelect">
+        <option value="" disabled selected>Select an image</option>
+        <option value="er diagram.jpg">er diagram.jpg</option>
+        <option value="class diagram.png">class diagram.png</option>
+        <option value="activity 1.jpg">activity 1.jpg</option>
+        <option value="activity 2.jpg">activity 2.jpg</option>
+        <option value="dfd 0.jpg">dfd 0.jpg</option>
+        <option value="dfd 1.jpg">dfd 1.jpg</option>
+        <option value="dfd 2.jpg">dfd 2.jpg</option>
+        <option value="use case.jpg">use case.jpg</option>
+        <option value="sequence 1 .jpg">sequence 1 .jpg</option>
+        <option value="component .jpg">component .jpg</option>
+        <option value="transection diagram.jpg">transection diagram.jpg</option>
+        <option value="coleboration 1.jpg">coleboration 1.jpg</option>
+        <option value="coleboration 2.jpg">coleboration 2.jpg</option>
+    </select>
+    
+    <div class="image-container">
+        <img id="displayedImage" src="" alt="Selected Image" style="display: none;">
+        <a id="downloadLink" class="download-btn" download>Download</a>
+    </div>
+
+    <script>
+        const imageSelect = document.getElementById('imageSelect');
+        const displayedImage = document.getElementById('displayedImage');
+        const downloadLink = document.getElementById('downloadLink');
+
+        imageSelect.addEventListener('change', function () {
+            const selectedValue = this.value;
+            if (selectedValue) {
+                displayedImage.src = selectedValue;
+                displayedImage.style.display = 'block';
+                downloadLink.href = selectedValue;
+                downloadLink.style.display = 'inline-block';
+                downloadLink.innerText = 'Download';
+            }
+        });
+    </script>
+</body>
+</html>
